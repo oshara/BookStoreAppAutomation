@@ -11,6 +11,11 @@ exports.BookStoreLoginPage = class BookStoreLoginPage{
         // added a frameLocator to get a locator inside of a iframe
         this.recaptcha= page.frameLocator('iframe[title="reCAPTCHA"]').locator('(//div[@class="rc-anchor-center-item rc-anchor-checkbox-holder"]/span/div)[1]');
         this.registerBtn= page.locator('#register');
+
+        this.userNameBtn=page.locator('#userName');
+        this.userPassword= page.locator('#password');
+        this.loginBtn= page.locator('#login');
+        
     }
 
     async clickLoginMenu(){
@@ -28,5 +33,11 @@ exports.BookStoreLoginPage = class BookStoreLoginPage{
         await this.password.fill(password);
         await this.recaptcha.click();
         await this.registerBtn.click();
+    }
+
+    async loginToBookStore(userName,password){
+        await this.userNameBtn.fill(userName);
+        await this.userPassword.fill(password);
+        await this.loginBtn.click();
     }
 }
