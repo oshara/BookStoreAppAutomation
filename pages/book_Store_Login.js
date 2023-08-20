@@ -1,3 +1,5 @@
+const { expect } = require("@playwright/test");
+
 exports.BookStoreLoginPage = class BookStoreLoginPage{
 
     constructor(page){
@@ -15,6 +17,8 @@ exports.BookStoreLoginPage = class BookStoreLoginPage{
         this.userNameBtn=page.locator('#userName');
         this.userPassword= page.locator('#password');
         this.loginBtn= page.locator('#login');
+
+        this.userLabel = page.locator('#userName-value');
         
     }
 
@@ -39,5 +43,12 @@ exports.BookStoreLoginPage = class BookStoreLoginPage{
         await this.userNameBtn.fill(userName);
         await this.userPassword.fill(password);
         await this.loginBtn.click();
+        
+        await this.userLabel.click();
+       
+       
+      expect(this.userLabel).toContainText(userName);
+      
     }
+
 }

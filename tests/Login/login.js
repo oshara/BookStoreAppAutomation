@@ -11,8 +11,9 @@ export const login = () => {
 
         await Home.gotoHomePage();
         await Home.clickBookAppBtn();
+        await BookStoreLogin.clickLoginMenu();
         await BookStoreLogin.loginToBookStore("sam","Sam@1234");
-     
+
 
     })
 }
